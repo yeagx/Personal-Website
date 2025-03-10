@@ -13,56 +13,64 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <link rel="stylesheet" href="CSS/main.css">
-    <link rel="stylesheet" href="CSS/nav.css">
-    <link rel="stylesheet" href="CSS/hero.css">
-    <link rel="stylesheet" href="CSS/about.css">
-    <link rel="stylesheet" href="CSS/projects.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+        
+        <link rel="stylesheet" href="CSS/main.css">
+        <link rel="stylesheet" href="CSS/nav.css">
+        <link rel="stylesheet" href="CSS/hero.css">
+        <link rel="stylesheet" href="CSS/about.css">
+        <link rel="stylesheet" href="CSS/projects.css">
     <link rel="stylesheet" href="CSS/contact.css">
     <link rel="stylesheet" href="CSS/footer.css">
-
+    
 </head>
 
 <body>
     <nav class="nav">
         <div class="brand">Abdulrhman.</div>
-        <div class="items">
-            <a href="#hero">Home</a>
-            <a href="#about">About</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
+        <div class="menu-container">
+            <div class="close-btn">✖</div>
+            <div class="items">
+                <a href="#hero">Home</a>
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+                <a href="#contact" class="connect-mobile">Connect with me</a>
+            </div>
         </div>
         <div class="connect-nav">
             <a href="#contact">Connect with me</a>
         </div>
         <div class="toggle-btn">
-            <span>&#9776;</span>
+            <span>☰</span>
         </div>
     </nav>
-
-
-
+    
+    
+    
     <section class="hero" id="hero">
         <div class="hero-content">
             <div class="hero-img">
-                <div class="circle-animation"></div>
-                <img src="Images/my photo.jpeg" alt="My Photo" class="personal-img">
+                <div class="image-wrapper">
+                    <div class="gradient-ring"></div>
+                    <img src="Images/my photo.jpeg" alt="My Photo" class="personal-img">
+                </div>
             </div>
-
+            
             <article>
                 <h1>I'm <span class="highlight">Abdulrhman Mohamed</span>, frontend developer based in Egypt.</h1>
                 <p>I am a junior frontend developer from Egypt. Currently a CS student at Arab Academy for Science,
                     Technology & Maritime Transport.</p>
-            </article>
-            <div class="hero-buttons">
-                <a href="#contact" class="hero-connect">Connect with me</a>
-                <a href="CV.pdf" download="Abdulrhman Mohamed's CV.pdf" class="res-btn">My resume</a>
+                </article>
+                <div class="hero-buttons">
+                    <a href="#contact" class="hero-connect">Connect with me</a>
+                    <a href="CV.pdf" download="Abdulrhman Mohamed's CV.pdf" class="res-btn">My resume</a>
+                </div>
             </div>
-        </div>
     </section>
 
-
+    
     <section class="about" id="about">
         <h1>About Me</h1>
         <div class="about-content">
@@ -77,8 +85,8 @@
                 <p>Eager to expand my knowledge, I stay updated with the latest technologies and best practices. My
                     dedication to frontend
                     development drives me to continually learn and collaborate effectively within the industry.</p>
-                <div class="skills">
-                    <div class="skill-bar">
+                    <div class="skills">
+                        <div class="skill-bar">
                         <div class="skill-title">HTML</div>
                         <div class="skill-level skill-html"></div>
                     </div>
@@ -109,7 +117,7 @@
                     <a href="https://github.com/AYeagerr/Portfolio" class="code-btn" target="_blank">Code</a>
                 </div>
             </div>
-
+            
             <div class="box">
                 <div class="name">IGYM - Gym system landing page</div>
                 <div class="project-img">
@@ -120,7 +128,7 @@
                     <a href="https://github.com/AYeagerr/IGYM---Group" class="code-btn" target="_blank">Code</a>
                 </div>
             </div>
-
+            
             <div class="box">
                 <div class="name">Aria - Music streaming service landing page</div>
                 <div class="project-img">
@@ -142,31 +150,31 @@
                         Demo</a>
                     <a href="https://github.com/AYeagerr/red.-E-commerce-Tech-Store" class="code-btn"
                         target="_blank">Code</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section class="contact" id="contact">
-        <h2>Get in touch</h2>
+        </section>
+        
+        <section class="contact" id="contact">
+            <h2>Get in touch</h2>
         <div class="container">
             <div class="contact-info">
                 <h2>Let's talk</h2>
                 <p>I'm currently available to take on new projects, so feel free to send me a message about anything
                     that
                     you want me to work on. You can contact anytime.</p>
-                <ul>
-                    <li><i class="fas fa-envelope"></i> abdulrhman.mohamed026@gmail.com</li>
-                    <li><i class="fas fa-phone"></i> +201023232234</li>
-                    <li><i class="fas fa-map-marker-alt"></i> Cairo - Egypt</li>
-                </ul>
-            </div>
-            <div class="contact-form">
-                <form action="https://forms.gle/9eE7xVVqieSUfEyXA" method="GET">
-                    <label for="name">Your Name</label>
-                    <input type="text" id="name" name="entry.371080705" placeholder="Enter your name" required>
-
-                    <label for="email">Your Email</label>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> abdulrhman.mohamed026@gmail.com</li>
+                        <li><i class="fas fa-phone"></i> +201023232234</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Cairo - Egypt</li>
+                    </ul>
+                </div>
+                <div class="contact-form">
+                    <form action="https://forms.gle/9eE7xVVqieSUfEyXA" method="GET">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="entry.371080705" placeholder="Enter your name" required>
+                        
+                        <label for="email">Your Email</label>
                     <input type="email" id="email" name="entry.583663237" placeholder="Enter your email" required>
 
                     <label for="message">Write your message here</label>
@@ -182,18 +190,21 @@
         <p>&copy; 2024 Abdulrhman Mohamed - All Rights Reserved</p>
     </footer>
 
-
-
+    
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
-    <script src="js/skills-bar.js"></script>
-
-    <script>
+        
+        <!-- <script src="js/skills-bar.js"></script> -->
+        
+        <script>
         document.querySelector('.toggle-btn').addEventListener('click', function () {
             document.querySelector('.nav').classList.toggle('active');
         });
     </script>
+    <script src="js/animations.js"></script>
+    
 </body>
 
 </html>
