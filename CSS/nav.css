@@ -14,33 +14,57 @@
   font-weight: bold;
   color: white;
   cursor: pointer;
+  transition: background 0.3s ease;
 }
 
-.items a, 
-.connect-nav a {
-  margin-left: 20px;
+.brand:hover {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 136, 0, 1) 0%,
+    rgba(246, 0, 255, 1) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.menu-container {
+  display: flex;
+  align-items: center;
+}
+
+.items {
+  display: flex;
+  align-items: center;
+}
+
+.items a {
+  margin-left: 25px;
   color: white;
   text-decoration: none;
   font-size: 16px;
-  transition: color 0.3s ease;
+  padding: 8px 15px;
+  border-radius: 25px;
+  transition: all 0.3s ease;
 }
 
-.items a:hover, 
-.connect-nav a:hover {
+.items a:hover {
+  background: rgba(246, 0, 255, 0.1);
   color: #ee31ff;
 }
 
 .connect-nav a {
+  margin-left: 25px;
   padding: 10px 20px;
-  border-radius: 20px;
+  border-radius: 25px;
   background: linear-gradient(
     90deg,
     rgba(246, 0, 255, 1) 0%,
     rgba(255, 136, 0, 1) 100%
   );
   color: white;
-  text-align: center;
-  transition: background 0.4s ease-in-out, color 0.1s ease-in-out;
+  text-decoration: none;
+  font-size: 16px;
+  transition: all 0.4s ease-in-out;
 }
 
 .connect-nav a:hover {
@@ -52,62 +76,131 @@
   color: #121212;
 }
 
-/* Hover Effect on Brand */
-.brand:hover {
-  background: linear-gradient(
-    90deg,
-    rgba(255, 136, 0, 1) 0%,
-    rgba(246, 0, 255, 1) 100%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.toggle-btn {
+  display: none;
+  cursor: pointer;
 }
 
-/* Toggle Button Styling */
 .toggle-btn span {
-  display: inline-block;
-  padding: 5px 10px;
   font-size: 25px;
   color: rgba(246, 0, 255, 1);
-  border-radius: 5px;
+  padding: 5px 10px;
 }
 
+.close-btn {
+  display: none;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 30px;
+  color: #fff;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 50%;
+  transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+  color: #ee31ff;
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .items,
+  .toggle-btn {
+    display: block;
+  }
+
   .connect-nav {
     display: none;
   }
 
-  .toggle-btn {
-    display: block;
-    cursor: pointer;
-  }
-
-  .nav.active .items {
+  .menu-container {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100vh;
+    background: rgba(18, 18, 18, 0.95);
+    backdrop-filter: blur(5px);
+    z-index: 999;
     display: flex;
     flex-direction: column;
-    position: absolute;
-    top: 60px;
-    right: 30px;
-    background-color: #1a1a1a;
-    padding: 10px 20px;
-    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto; /* Allows scrolling if needed */
+    padding: 20px;
+    box-sizing: border-box; /* Ensure padding doesn't add to width */
   }
 
-  .nav.active .connect-nav {
-    display: none;
-    margin-top: 10px;
+  .close-btn {
+    display: block;
+  }
+
+  .items {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    padding-top: 60px; /* Space for close button */
+  }
+
+  .items a {
+    margin: 20px 0;
+    font-size: 24px;
+    padding: 15px 30px;
+    color: #fff;
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+
+  .connect-mobile {
+    display: block;
+    background: linear-gradient(
+      90deg,
+      rgba(246, 0, 255, 1) 0%,
+      rgba(255, 136, 0, 1) 100%
+    );
+    border-radius: 25px;
+    padding: 15px 30px;
+    margin-top: 30px;
+    width: 200px;
+    text-align: center;
+    transition: background 0.4s ease-in-out;
+  }
+
+  .connect-mobile:hover {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 136, 0, 1) 0%,
+      rgba(246, 0, 255, 1) 100%
+    );
+    color: #121212;
+  }
+
+  .nav.active .menu-container {
+    left: 0;
+  }
+
+  .items a:hover {
+    background: rgba(246, 0, 255, 0.2);
+    transform: scale(1.05);
   }
 }
 
 @media (min-width: 769px) {
-  .toggle-btn {
+  .menu-container {
+    position: static;
+    height: auto;
+    background: none;
+    backdrop-filter: none;
+  }
+
+  .close-btn {
     display: none;
   }
 
-  .connect-nav {
-    display: block;
+  .connect-mobile {
+    display: none;
   }
 }

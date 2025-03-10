@@ -1,16 +1,17 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 body {
-  min-height: 100svh;
-  background-color: #121212;
+    min-height: 100svh;
+    background-color: #121212;
+    width: 100%;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
-/* Custom scrollbar styles */
 ::-webkit-scrollbar {
     width: 6px;
 }
@@ -20,7 +21,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient( rgba(246, 0, 255, 1) 0%, rgba(255, 136, 0, 1) 100%);
+    background: linear-gradient(rgba(246, 0, 255, 1) 0%, rgba(255, 136, 0, 1) 100%);
     border-radius: 10px;
     transition: background 0.4s ease-in-out;
 }

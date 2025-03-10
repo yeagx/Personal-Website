@@ -7,16 +7,33 @@
   text-align: center;
   background-color: #121212;
   padding: 50px 20px;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .hero-content {
   max-width: 800px;
   width: 100%;
-  margin: 70px;
+  margin: 70px auto; /* Center it horizontally */
+  padding: 0 10px; /* Prevent overflow from padding */
+}
+
+.personal-img {
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
+  margin-bottom: 20px;
+  object-fit: cover;
 }
 
 .hero-img {
-  margin-bottom: 30px;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.image-wrapper {
+  position: relative;
+  display: inline-block;
 }
 
 .personal-img {
@@ -24,6 +41,43 @@
   width: 300px;
   height: 300px;
   object-fit: cover;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gradient-ring {
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 320px;
+  height: 320px;
+  background: linear-gradient(
+    90deg,
+    rgba(246, 0, 255, 0.8) 0%,
+    rgba(255, 136, 0, 0.8) 100%
+  );
+  border-radius: 50%;
+  filter: blur(10px);
+  opacity: 0.5;
+  z-index: 1;
+  animation: rotateRing 10s linear infinite;
+}
+
+/* Hover effect */
+.hero-img:hover .personal-img {
+  box-shadow: 0 0 20px rgba(246, 0, 255, 0.5);
+}
+
+/* Ring rotation animation */
+@keyframes rotateRing {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }
 
 h1 {
@@ -106,7 +160,6 @@ p {
     font-size: 16px;
   }
 
-
   .hero-buttons {
     gap: 15px;
   }
@@ -116,8 +169,15 @@ p {
     padding: 12px;
   }
 
-  .personal-img{
+  .personal-img {
     width: 150px;
-  height: 150px;
+    height: 150px;
+  }
+  .gradient-ring {
+    width: 170px;
+    height: 170px;
+  }
+  .hero-content {
+    margin: 40px auto;
   }
 }
