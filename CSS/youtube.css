@@ -60,19 +60,32 @@
     align-items: center;
     justify-content: center;
     background: transparent;
+    position: relative;
 }
 
 .channel-logo img {
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    border: 3px solid transparent;
-    background: linear-gradient(45deg, rgba(246,0,255,1), rgba(255,136,0,1)) border-box;
-    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: destination-out;
-    mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-    mask-composite: exclude;
     transition: transform 0.3s ease;
+    object-fit: cover;
+    background: #181818;
+    display: block;
+    position: relative;
+    z-index: 2;
+}
+
+.channel-logo::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 132px;
+    height: 132px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, rgba(246,0,255,1), rgba(255,136,0,1));
+    z-index: 1;
 }
 
 .channel-logo img:hover {
