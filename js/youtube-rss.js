@@ -152,6 +152,27 @@ class YouTubeRSS {
     }
 }
 
+// Fetch and set channel avatar from RSS feed
+function setChannelLogoFromRSS(channelId) {
+    const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
+    const proxyUrl = 'https://api.allorigins.win/raw?url=';
+    fetch(proxyUrl + encodeURIComponent(rssUrl))
+        .then(res => res.text())
+        .then(xmlText => {
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+            const thumbnail = xmlDoc.querySelector('feed > yt\\:channelId ~ media\\:thumbnail, feed > media\\:thumbnail');
+            if (thumbnail && thumbnail.getAttribute('url')) {
+                const img = document.querySelector('.channel-logo img');
+                if (img) img.src = thumbnail.getAttribute('url');
+            }
+        });
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    setChannelLogoFromRSS('UCyrZcIzWhSUJUxpa5mzYF9w');
+});
+
 // Initialize RSS version (uncomment to use instead of API version)
 document.addEventListener('DOMContentLoaded', () => {
     const youtubeRSS = new YouTubeRSS();
