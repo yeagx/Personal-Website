@@ -270,6 +270,24 @@ document.addEventListener('DOMContentLoaded', () => {
         duration: 1,
         ease: 'power3.out'
     });
+
+    // Animate YouTube section on scroll
+    function animateOnScroll(selector, animationClass = 'in-view') {
+        const el = document.querySelector(selector);
+        if (!el) return;
+        const observer = new window.IntersectionObserver(
+            ([entry], obs) => {
+                if (entry.isIntersecting) {
+                    el.classList.add(animationClass);
+                    obs.disconnect();
+                }
+            },
+            { threshold: 0.2 }
+        );
+        observer.observe(el);
+    }
+
+    animateOnScroll('.youtube');
 });
 
 gsap.registerPlugin(ScrollTrigger);
