@@ -1,0 +1,437 @@
+/* Clash Royale Section */
+.clash-royale {
+    margin: 60px;
+    padding: 20px;
+    text-align: center;
+}
+
+.clash-royale h1 {
+    font-size: 36px;
+    margin-bottom: 50px;
+    background: linear-gradient(90deg, rgba(246,0,255,1) 0%, rgba(255,136,0,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+}
+
+.clash-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    align-items: stretch;
+}
+
+.player-info, .main-deck {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 30px;
+    transition: all 0.3s ease;
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 100%;
+    box-sizing: border-box;
+}
+
+.player-info:hover, .main-deck:hover {
+    border-color: rgba(246, 0, 255, 0.5);
+    background: rgba(246, 0, 255, 0.05);
+    transform: translateY(-5px);
+}
+
+.player-stats h2, .main-deck h2 {
+    color: white;
+    font-size: 24px;
+    margin-bottom: 25px;
+    font-weight: bold;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    min-height: 120px;
+    max-height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.stat-item:hover {
+    background: rgba(255, 136, 0, 0.1);
+    transform: scale(1.05);
+}
+
+.stat-item i {
+    font-size: 32px;
+    color: #ff6b35;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.stat-item h4 {
+    color: white;
+    font-size: 16px;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.stat-item p {
+    color: #ccc;
+    font-size: 14px;
+    margin: 0;
+}
+
+.deck-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.deck-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    min-height: 170px;
+    max-height: 170px;
+    justify-content: flex-start;
+    box-sizing: border-box;
+}
+
+.deck-card:hover {
+    background: rgba(255, 136, 0, 0.1);
+    transform: translateY(-3px);
+}
+
+.deck-card img {
+    width: 80px;
+    height: 100px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    display: block;
+}
+
+.deck-card:hover img {
+    border-color: #ff6b35;
+    transform: scale(1.1);
+}
+
+.deck-card span {
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.deck-info {
+    text-align: left;
+}
+
+.deck-info h3 {
+    color: white;
+    font-size: 20px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.deck-info p {
+    color: #ccc;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.deck-stats {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.avg-elixir, .deck-type {
+    background: linear-gradient(90deg, rgba(246,0,255,1) 0%, rgba(255,136,0,1) 100%);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.favorite-card {
+    border: 3px solid gold;
+    box-shadow: 0 0 18px 2px gold;
+    position: relative;
+    background: linear-gradient(135deg, #fffbe6 60%, #ffd700 100%);
+    min-height: 170px;
+    max-height: 170px;
+}
+
+.favorite-card .fa-crown {
+    margin-left: 4px;
+    font-size: 16px;
+    vertical-align: middle;
+}
+
+.favorite-card-highlight {
+    margin-top: 32px;
+    padding: 24px 0 0 0;
+    border-top: 2px solid #ffd70044;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.favorite-card-highlight h3 {
+    color: #ffd700 !important;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+.fav-card-golden {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-top: 12px;
+    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+    border: 2px solid #ffd700;
+    border-radius: 16px;
+    padding: 20px 32px;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.fav-card-golden img {
+    border: 3px solid #ffd700;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+    background: #1a1a1a;
+    border-radius: 12px;
+}
+
+.fav-desc p {
+    color: #ffffff !important;
+    font-size: 1.1em;
+    font-weight: normal;
+    margin: 0;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    line-height: 1.4;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .clash-royale {
+        margin: 20px 0;
+    }
+    
+    .clash-royale h1 {
+        text-align: left;
+        font-size: 28px;
+    }
+    
+    .clash-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .player-info, .main-deck {
+        padding: 20px;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .deck-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    
+    .deck-card, .favorite-card {
+        min-height: 150px;
+        max-height: 150px;
+    }
+    .stat-item {
+        min-height: 100px;
+        max-height: 100px;
+    }
+    .fav-card-golden {
+        flex-direction: column;
+        gap: 12px;
+        padding: 12px 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .deck-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .deck-card, .favorite-card {
+        min-height: 120px;
+        max-height: 120px;
+    }
+    .stat-item {
+        min-height: 80px;
+        max-height: 80px;
+    }
+} 
+
+.clash-royale, .clash-royale * {
+    font-family: 'Luckiest Guy', 'Burbank Big Condensed', Impact, Arial, sans-serif !important;
+}
+
+.clash-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    align-items: stretch;
+}
+
+.player-info, .main-deck {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 30px;
+    transition: all 0.3s ease;
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 100%;
+    box-sizing: border-box;
+}
+
+@media (max-width: 1200px) {
+    .clash-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .player-info, .main-deck {
+        min-height: unset;
+    }
+}
+
+.clash-royale h1, .clash-royale h2, .clash-royale h3, .clash-royale h4, .clash-royale h5, .clash-royale h6 {
+    font-family: 'Luckiest Guy', 'Burbank Big Condensed', Impact, Arial, sans-serif !important;
+    letter-spacing: 1px;
+} 
+
+/* Remove debug styles */
+.deck-card img {
+    border: none !important;
+    background: none !important;
+}
+
+.stat-item i, .stat-item .stat-icon {
+    color: #ff6b35 !important;
+    background: none !important;
+    font-size: 2.2em !important;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.stat-item .stat-icon {
+    font-size: 2.5em !important;
+    line-height: 1;
+    text-align: center;
+}
+
+.deck-card, .stat-item {
+    background: rgba(255, 255, 255, 0.03) !important;
+    color: #fff !important;
+    box-shadow: none !important;
+}
+
+/* Make player profile grid fill space and center content */
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    height: 100%;
+}
+
+.stat-item {
+    flex: 1 1 0;
+    min-height: 120px;
+    max-height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+}
+
+.player-stats {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.player-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+} 
+
+@media (max-width: 768px) {
+    .fav-card-golden {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+        text-align: center;
+    }
+    
+    .favorite-card-highlight h3 {
+        font-size: 1.3em;
+    }
+    
+    .fav-desc p {
+        font-size: 1em;
+    }
+} 
+
+.last-updated {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+.last-updated p {
+    color: #ccc;
+    font-size: 0.9em;
+    margin: 0;
+    font-style: italic;
+}
+
+.last-updated span {
+    color: #ff6b35;
+    font-weight: bold;
+} 
