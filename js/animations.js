@@ -288,6 +288,78 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     animateOnScroll('.youtube');
+
+    // Clash Royale section animations
+    gsap.from('.clash-royale h1', {
+        scrollTrigger: {
+            trigger: '.clash-royale',
+            start: 'top 90%',
+            toggleActions: 'play none none reverse'
+        },
+        y: -50,
+        opacity: 0,
+        duration: 1,
+        ease: 'power3.out',
+        immediateRender: false
+    });
+
+    gsap.from('.player-info', {
+        scrollTrigger: {
+            trigger: '.clash-royale',
+            start: 'top 90%',
+            toggleActions: 'play none none reverse'
+        },
+        x: -100,
+        opacity: 0,
+        duration: 1,
+        ease: 'power3.out',
+        delay: 0.3,
+        immediateRender: false
+    });
+
+    gsap.from('.main-deck', {
+        scrollTrigger: {
+            trigger: '.clash-royale',
+            start: 'top 90%',
+            toggleActions: 'play none none reverse'
+        },
+        x: 100,
+        opacity: 0,
+        duration: 1,
+        ease: 'power3.out',
+        delay: 0.3,
+        immediateRender: false
+    });
+
+    gsap.from('.stat-item', {
+        scrollTrigger: {
+            trigger: '.clash-royale',
+            start: 'top 90%',
+            toggleActions: 'play none none reverse'
+        },
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        ease: 'power3.out',
+        stagger: 0.1,
+        delay: 0.6,
+        immediateRender: false
+    });
+
+    gsap.from('.deck-card', {
+        scrollTrigger: {
+            trigger: '.clash-royale',
+            start: 'top 90%',
+            toggleActions: 'play none none reverse'
+        },
+        y: 50,
+        opacity: 0,
+        duration: 0.8,
+        ease: 'power3.out',
+        stagger: 0.1,
+        delay: 0.8,
+        immediateRender: false
+    });
 });
 
 gsap.registerPlugin(ScrollTrigger);
