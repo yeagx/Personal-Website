@@ -163,9 +163,17 @@ function setChannelLogoFromRSS(channelId) {
             const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
             const thumbnail = xmlDoc.querySelector('feed > yt\\:channelId ~ media\\:thumbnail, feed > media\\:thumbnail');
             if (thumbnail && thumbnail.getAttribute('url')) {
-                const img = document.querySelector('.channel-logo img');
-                if (img) img.src = thumbnail.getAttribute('url');
+                const img = document.querySelector('#channel-logo-img');
+                if (img) {
+                    img.src = thumbnail.getAttribute('url');
+                    img.style.display = 'block';
+                    const fallback = img.nextElementSibling;
+                    if (fallback) fallback.style.display = 'none';
+                }
             }
+        })
+        .catch(error => {
+            console.log('Could not fetch channel logo from RSS, using fallback');
         });
 }
 
