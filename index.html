@@ -330,18 +330,19 @@
                 </ul>
             </div>
             <div class="contact-form">
-                <form action="https://forms.gle/9eE7xVVqieSUfEyXA" method="GET">
+                <form id="contactForm">
                     <label for="name">Your Name</label>
-                    <input type="text" id="name" name="entry.371080705" placeholder="Enter your name" required>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
                     
                     <label for="email">Your Email</label>
-                <input type="email" id="email" name="entry.583663237" placeholder="Enter your email" required>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
 
                 <label for="message">Write your message here</label>
-                <textarea id="message" name="entry.474315458" placeholder="Enter your message" required></textarea>
+                <textarea id="message" name="message" placeholder="Enter your message" required></textarea>
 
                 <button type="submit" class="submit-btn">Submit now</button>
             </form>
+        </div>
         </div>
     </div>
 </section>
@@ -356,7 +357,6 @@
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
         
-        <!-- <script src="js/skills-bar.js"></script> -->
         
         <script>
         document.querySelector('.toggle-btn').addEventListener('click', function () {
@@ -365,6 +365,7 @@
     </script>
     <script src="js/animations.js"></script>
     <script src="js/youtube-rss.js"></script>
+    <script src="js/google-form-handler.js"></script>
     
 </body>
 
