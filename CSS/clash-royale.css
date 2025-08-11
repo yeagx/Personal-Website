@@ -116,6 +116,7 @@
     max-height: 170px;
     justify-content: flex-start;
     box-sizing: border-box;
+    position: relative;
 }
 
 .deck-card:hover {
@@ -144,6 +145,20 @@
     font-size: 12px;
     font-weight: bold;
     text-align: center;
+}
+
+/* Elixir badge */
+.elixir-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    color: #fff !important;
+    font-size: 12px !important;
+    line-height: 1;
+    padding: 6px 8px;
+    border-radius: 999px;
+    box-shadow: 0 6px 16px rgba(37,117,252,0.35);
 }
 
 .deck-info {
@@ -435,3 +450,31 @@
     color: #ff6b35;
     font-weight: bold;
 } 
+
+/* Role badge and chips */
+.role-badge {
+    display: inline-block;
+    margin-left: 6px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #ffd700 0%, #ff9f1a 100%);
+    color: #121212;
+    font-size: 12px;
+}
+
+.achievements-chips {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 16px;
+}
+
+.achievements-chips .chip {
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #fff;
+    font-size: 12px;
+}

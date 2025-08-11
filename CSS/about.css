@@ -32,6 +32,7 @@
     align-items: center;
 }
 
+
 .learning-goals {
     margin-top: 50px;
     width: 100%;
@@ -42,6 +43,24 @@
     font-size: 20px;
     margin-bottom: 30px;
     font-weight: bold;
+}
+
+.about-story {
+    width: 100%;
+    max-width: 900px;
+    margin-top: 24px;
+    padding-top: 12px;
+    border-top: 1px dashed rgba(255,255,255,0.12);
+}
+
+.about-story h3 {
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.about-story p {
+    color: #ccc;
 }
 
 .goals-grid {
@@ -125,6 +144,8 @@
     text-decoration: none;
     border: 1.5px solid transparent;
 }
+
+/* removed human card */
 
 @media (max-width: 1100px) {
     .about-content {

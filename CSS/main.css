@@ -10,7 +10,10 @@ body {
     background-color: #121212;
     width: 100%;
     overflow-x: hidden; /* Prevent horizontal scrolling */
+    font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
+
+/* removed experimental snap offset */
 
 ::-webkit-scrollbar {
     width: 6px;
@@ -39,6 +42,53 @@ body {
     -webkit-text-fill-color: transparent;
     font-weight: bold;
     text-align: center;
+}
+
+/* revert section snap/spacing changes */
+
+/* Active nav link highlight */
+.items a.active {
+    background: rgba(246, 0, 255, 0.15);
+    color: #ee31ff;
+}
+
+/* Scroll progress bar */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    z-index: 1500;
+    background: transparent;
+}
+
+.scroll-progress-bar {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(246,0,255,1) 0%, rgba(255,136,0,1) 100%);
+}
+
+/* Back to top */
+#back-to-top {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.06);
+    color: #fff;
+    cursor: pointer;
+    z-index: 1500;
+    display: none;
+}
+
+#back-to-top.show {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 @media (max-width: 768px) {
