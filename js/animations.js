@@ -142,6 +142,8 @@ document.addEventListener('DOMContentLoaded', () => {
         ease: 'power3.out'
     });
 
+    // removed about-intro animation
+
     gsap.from('.about-content .left', {
         scrollTrigger: {
             trigger: '.about',
@@ -271,6 +273,27 @@ document.addEventListener('DOMContentLoaded', () => {
         ease: 'power3.out'
     });
 
+    // Active nav link while scrolling
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.items a');
+    const idToLink = new Map(Array.from(navLinks).map(a => [a.getAttribute('href').replace('#',''), a]));
+
+    sections.forEach(section => {
+        ScrollTrigger.create({
+            trigger: section,
+            start: 'top center',
+            end: 'bottom center',
+            onEnter: () => toggleActive(section.id),
+            onEnterBack: () => toggleActive(section.id)
+        });
+    });
+
+    function toggleActive(id){
+        navLinks.forEach(a => a.classList.remove('active'));
+        const link = idToLink.get(id);
+        if (link) link.classList.add('active');
+    }
+
     // Animate YouTube section on scroll
     function animateOnScroll(selector, animationClass = 'in-view') {
         const el = document.querySelector(selector);
@@ -288,6 +311,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     animateOnScroll('.youtube');
+
+    // Scroll progress bar & back-to-top
+    const progressBar = document.querySelector('.scroll-progress-bar');
+    const backToTop = document.getElementById('back-to-top');
+    const onScroll = () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        if (progressBar) progressBar.style.width = progress + '%';
+        if (backToTop) {
+            if (scrollTop > 600) backToTop.classList.add('show');
+            else backToTop.classList.remove('show');
+        }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    if (backToTop) {
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
 
     // Clash Royale section animations
     gsap.from('.clash-royale h1', {

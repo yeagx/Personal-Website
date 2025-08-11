@@ -46,6 +46,26 @@ class YouTubeRSS {
         }
     }
 
+    async getRecentVideos(count = 3) {
+        try {
+            const proxyUrl = 'https://api.allorigins.win/raw?url=';
+            const response = await fetch(proxyUrl + encodeURIComponent(this.rssUrl));
+            const xmlText = await response.text();
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+            const entries = Array.from(xmlDoc.querySelectorAll('entry')).slice(0, count);
+            return entries.map(entry => ({
+                videoId: entry.querySelector('yt\\:videoId, videoId').textContent,
+                title: entry.querySelector('title').textContent,
+                publishedAt: entry.querySelector('published').textContent,
+                thumbnail: `https://i.ytimg.com/vi/${entry.querySelector('yt\\:videoId, videoId').textContent}/hqdefault.jpg`
+            }));
+        } catch (e) {
+            console.error('Error fetching recent videos from RSS:', e);
+            return [];
+        }
+    }
+
     updateVideoDisplay(videoData) {
         if (!videoData) {
             this.showFallback();
@@ -143,11 +163,50 @@ class YouTubeRSS {
     async init() {
         const videoData = await this.getLatestVideo();
         this.updateVideoDisplay(videoData);
+        // Recent grid
+        const grid = document.getElementById('recent-grid');
+        if (grid) {
+            const recent = await this.getRecentVideos(3);
+            if (recent.length) {
+                grid.innerHTML = '';
+                recent.forEach(item => {
+                    const a = document.createElement('a');
+                    a.href = `https://www.youtube.com/watch?v=${item.videoId}`;
+                    a.target = '_blank';
+                    a.rel = 'noopener';
+                    a.className = 'video-card';
+                    a.innerHTML = `
+                        <img src="${item.thumbnail}" alt="${item.title}">
+                        <div class="meta">${item.title}</div>
+                    `;
+                    grid.appendChild(a);
+                });
+            }
+        }
         
         // Refresh every hour
         setInterval(async () => {
             const newVideoData = await this.getLatestVideo();
             this.updateVideoDisplay(newVideoData);
+            const grid = document.getElementById('recent-grid');
+            if (grid) {
+                const recent = await this.getRecentVideos(3);
+                if (recent.length) {
+                    grid.innerHTML = '';
+                    recent.forEach(item => {
+                        const a = document.createElement('a');
+                        a.href = `https://www.youtube.com/watch?v=${item.videoId}`;
+                        a.target = '_blank';
+                        a.rel = 'noopener';
+                        a.className = 'video-card';
+                        a.innerHTML = `
+                            <img src="${item.thumbnail}" alt="${item.title}">
+                            <div class="meta">${item.title}</div>
+                        `;
+                        grid.appendChild(a);
+                    });
+                }
+            }
         }, 60 * 60 * 1000);
     }
 }
