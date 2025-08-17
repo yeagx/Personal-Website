@@ -1,4 +1,5 @@
 .about{
+    padding: 100px 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -11,7 +12,9 @@
     background: linear-gradient(90deg, rgba(246,0,255,1) 0%, rgba(255,136,0,1) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    background-clip: text;
     font-weight: bold;
+    text-align: center;
 }
 
 .about-content {
@@ -32,6 +35,93 @@
     align-items: center;
 }
 
+.right p {
+    color: #ccc;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    text-align: center;
+    max-width: 800px;
+}
+
+.learning-progress-section {
+    width: 100%;
+    max-width: 900px;
+    margin: 40px 0;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    text-align: center;
+}
+
+.learning-progress-section h3 {
+    color: #fff;
+    font-size: 24px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.learning-progress-section p {
+    color: #ccc;
+    margin-bottom: 25px;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.learning-progress {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.progress-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.progress-item.completed {
+    background: rgba(76, 175, 80, 0.1);
+    border-color: rgba(76, 175, 80, 0.3);
+}
+
+.progress-item.in-progress {
+    background: rgba(255, 193, 7, 0.1);
+    border-color: rgba(255, 193, 7, 0.3);
+}
+
+.progress-item.upcoming {
+    background: rgba(158, 158, 158, 0.1);
+    border-color: rgba(158, 158, 158, 0.3);
+}
+
+.progress-item i {
+    font-size: 16px;
+}
+
+.progress-item.completed i {
+    color: #4caf50;
+}
+
+.progress-item.in-progress i {
+    color: #ffc107;
+}
+
+.progress-item.upcoming i {
+    color: #9e9e9e;
+}
+
+.progress-item span {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+}
 
 .learning-goals {
     margin-top: 50px;
@@ -43,6 +133,7 @@
     font-size: 20px;
     margin-bottom: 30px;
     font-weight: bold;
+    text-align: center;
 }
 
 .about-story {
@@ -51,6 +142,7 @@
     margin-top: 24px;
     padding-top: 12px;
     border-top: 1px dashed rgba(255,255,255,0.12);
+    text-align: center;
 }
 
 .about-story h3 {
@@ -61,6 +153,7 @@
 
 .about-story p {
     color: #ccc;
+    line-height: 1.6;
 }
 
 .goals-grid {
@@ -145,48 +238,220 @@
     border: 1.5px solid transparent;
 }
 
-/* removed human card */
-
+/* Mobile Responsiveness */
 @media (max-width: 1100px) {
+    .about {
+        padding: 80px 20px;
+    }
+    
     .about-content {
         flex-direction: column;
         align-items: center;
         gap: 24px;
+        padding: 20px 15px;
     }
+    
     .right {
         width: 100%;
         min-width: 0;
     }
+    
     .goals-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 18px;
     }
+    
     .social-links {
         max-width: 400px;
         margin-top: 32px;
     }
+    
+    .about h1 {
+        font-size: 32px;
+        margin-bottom: 30px;
+    }
+    
+    .learning-progress-section {
+        padding: 25px 20px;
+        margin: 30px 0;
+    }
+    
+    .learning-progress {
+        gap: 12px;
+    }
+    
+    .progress-item {
+        padding: 10px 16px;
+    }
+    
+    .progress-item span {
+        font-size: 13px;
+    }
 }
 
 @media (max-width: 768px) {
+    .about {
+        padding: 60px 15px;
+        margin-top: 20px;
+    }
+    
     .about-content {
         flex-direction: column;
         gap: 18px;
+        padding: 15px 10px;
     }
+    
     .right {
         width: 100%;
     }
+    
     .goals-grid {
         grid-template-columns: 1fr;
         gap: 14px;
     }
+    
     .social-links {
         max-width: 320px;
         gap: 0;
         margin-top: 24px;
     }
+    
     .social-links a {
         width: 44px;
         height: 44px;
         font-size: 20px;
+    }
+    
+    .about h1 {
+        font-size: 28px;
+        margin-bottom: 25px;
+    }
+    
+    .right p {
+        font-size: 14px;
+        line-height: 1.5;
+        margin-bottom: 15px;
+    }
+    
+    .learning-goals h3 {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+    
+    .about-story h3 {
+        font-size: 16px;
+    }
+    
+    .about-story p {
+        font-size: 14px;
+    }
+    
+    .goal-item {
+        padding: 15px;
+    }
+    
+    .goal-item h4 {
+        font-size: 16px;
+    }
+    
+    .goal-item p {
+        font-size: 13px;
+    }
+    
+    .learning-progress-section {
+        padding: 20px 15px;
+        margin: 25px 0;
+    }
+    
+    .learning-progress-section h3 {
+        font-size: 20px;
+    }
+    
+    .learning-progress-section p {
+        font-size: 14px;
+    }
+    
+    .learning-progress {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .progress-item {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .about {
+        padding: 40px 10px;
+    }
+    
+    .about-content {
+        padding: 10px 5px;
+    }
+    
+    .about h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    
+    .right p {
+        font-size: 13px;
+        margin-bottom: 12px;
+    }
+    
+    .goals-grid {
+        gap: 12px;
+    }
+    
+    .goal-item {
+        padding: 12px;
+    }
+    
+    .goal-item i {
+        font-size: 28px;
+        margin-bottom: 12px;
+    }
+    
+    .goal-item h4 {
+        font-size: 15px;
+    }
+    
+    .goal-item p {
+        font-size: 12px;
+    }
+    
+    .social-links {
+        max-width: 280px;
+    }
+    
+    .social-links a {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+    
+    .learning-progress-section {
+        padding: 15px 10px;
+        margin: 20px 0;
+    }
+    
+    .learning-progress-section h3 {
+        font-size: 18px;
+    }
+    
+    .learning-progress-section p {
+        font-size: 13px;
+    }
+    
+    .progress-item {
+        padding: 8px 12px;
+    }
+    
+    .progress-item span {
+        font-size: 12px;
     }
 }

@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 50px 100px;
+    padding: 100px 100px;
     color: #fff;
 }
 
@@ -61,6 +61,41 @@
 
 .contact-info a:hover {
     text-decoration: underline;
+}
+
+.service-highlights {
+    margin: 30px 0;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.service-highlights h3 {
+    color: #fff;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.service-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.service-list li {
+    margin: 8px 0;
+    display: flex;
+    align-items: center;
+    font-size: 0.95rem;
+    color: #ccc;
+}
+
+.service-list i {
+    margin-right: 12px;
+    color: rgba(246, 0, 255, 1);
+    font-size: 14px;
 }
 
 .contact-form {
@@ -134,5 +169,18 @@
     .contact-info, .contact-form{
         width: 100%;
         text-align: left;
+    }
+    
+    .service-highlights {
+        margin: 20px 0;
+        padding: 15px;
+    }
+    
+    .service-highlights h3 {
+        font-size: 1.1rem;
+    }
+    
+    .service-list li {
+        font-size: 0.9rem;
     }
 }

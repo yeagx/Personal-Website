@@ -3,8 +3,8 @@
     margin: 60px;
     padding: 20px;
     text-align: center;
-    opacity: 0;
-    transform: translateY(40px);
+    opacity: 1;
+    transform: translateY(0);
     transition: opacity 0.9s cubic-bezier(.4,2,.6,1), transform 0.9s cubic-bezier(.4,2,.6,1);
 }
 
@@ -16,6 +16,7 @@
 .youtube h1 {
     font-size: 36px;
     margin-bottom: 50px;
+    margin-top: 60px;
     background: linear-gradient(90deg, rgba(246,0,255,1) 0%, rgba(255,136,0,1) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

@@ -8,6 +8,7 @@
 .clash-royale h1 {
     font-size: 36px;
     margin-bottom: 50px;
+    margin-top: 60px;
     background: linear-gradient(90deg, rgba(246,0,255,1) 0%, rgba(255,136,0,1) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
