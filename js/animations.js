@@ -1,410 +1,241 @@
 // Wait for DOM to load
 document.addEventListener('DOMContentLoaded', () => {
-    // Navbar animation
-    gsap.from('.nav', {
-        y: -100,
-        opacity: 0,
-        duration: 1,
-        ease: 'power3.out'
-    });
-
-    // Mobile menu toggle
-    const toggleBtn = document.querySelector('.toggle-btn');
-    const closeBtn = document.querySelector('.close-btn');
-    const menuContainer = document.querySelector('.menu-container');
-    const menuItems = document.querySelectorAll('.items a');
-    let isOpen = false;
-
-    toggleBtn.addEventListener('click', () => {
-        if (!isOpen) {
-            // Open menu
-            gsap.to(menuContainer, {
-                left: 0,
-                duration: 0.6,
-                ease: 'power3.inOut'
-            });
-
-            gsap.fromTo(menuItems,
-                { y: 30, opacity: 0 },
-                {
-                    y: 0,
-                    opacity: 1,
-                    duration: 0.6,
-                    stagger: 0.1,
-                    ease: 'power3.out',
-                    delay: 0.2
+    // Check if GSAP is available
+    if (typeof gsap !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+        
+        // Hero section animation
+        gsap.from(".hero-content", {
+            duration: 1.5,
+            y: 100,
+            opacity: 0,
+            ease: "power3.out",
+            delay: 0.5,
+            onComplete: () => {
+                gsap.set(".hero-content", { opacity: 1, y: 0 });
+            }
+        });
+        
+        // About section animation
+        gsap.from(".about-content", {
+            scrollTrigger: {
+                trigger: ".about",
+                start: "top 80%",
+                end: "bottom 20%",
+                toggleActions: "play none none reverse"
+            },
+            duration: 1,
+            y: 50,
+            opacity: 0,
+            ease: "power2.out",
+            onComplete: () => {
+                gsap.set(".about-content", { opacity: 1, y: 0 });
+            }
+        });
+        
+        // Projects section animation
+        gsap.from(".box", {
+            scrollTrigger: {
+                trigger: ".projects",
+                start: "top 80%",
+                end: "bottom 20%",
+                toggleActions: "play none none reverse"
+            },
+            duration: 0.8,
+            y: 60,
+            opacity: 0,
+            stagger: 0.2,
+            ease: "power2.out",
+            onComplete: () => {
+                gsap.set(".box", { opacity: 1, y: 0 });
+            }
+        });
+        
+        // Contact section animation
+        gsap.from(".contact .container", {
+            scrollTrigger: {
+                trigger: ".contact",
+                start: "top 80%",
+                end: "bottom 20%",
+                toggleActions: "play none none reverse"
+            },
+            duration: 1,
+            y: 50,
+            opacity: 0,
+            ease: "power2.out",
+            onComplete: () => {
+                gsap.set(".contact .container", { opacity: 1, y: 0 });
+            }
+        });
+        
+        // Footer animation
+        gsap.from("footer", {
+            scrollTrigger: {
+                trigger: "footer",
+                start: "top 90%",
+                toggleActions: "play none none none"
+            },
+            duration: 0.8,
+            y: 30,
+            opacity: 0,
+            ease: "power2.out",
+            onComplete: () => {
+                gsap.set("footer", { opacity: 1, y: 0 });
+            }
+        });
+    }
+    
+    // Services section animation with Intersection Observer
+    const servicesSection = document.querySelector('.services');
+    if (servicesSection) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    observer.unobserve(entry.target);
                 }
-            );
-
-            document.querySelector('.nav').classList.add('active');
-            isOpen = true;
-        }
-    });
-
-    closeBtn.addEventListener('click', () => {
-        if (isOpen) {
-            // Close menu
-            gsap.to(menuContainer, {
-                left: '-100%',
-                duration: 0.6,
-                ease: 'power3.inOut'
             });
-
-            gsap.to(menuItems, {
-                y: 30,
-                opacity: 0,
-                duration: 0.4,
-                stagger: 0.1,
-                ease: 'power3.out'
+        }, {
+            threshold: 0.3,
+            rootMargin: '0px 0px -100px 0px'
+        });
+        
+        observer.observe(servicesSection);
+    }
+    
+    // YouTube section animation with Intersection Observer
+    const youtubeSection = document.querySelector('.youtube');
+    if (youtubeSection) {
+        const youtubeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    youtubeObserver.unobserve(entry.target);
+                }
             });
-
-            document.querySelector('.nav').classList.remove('active');
-            isOpen = false;
-        }
-    });
-
-    // Close menu when clicking a navigation link
-    menuItems.forEach(item => {
-        item.addEventListener('click', () => {
-            if (isOpen) {
-                gsap.to(menuContainer, {
-                    left: '-100%',
-                    duration: 0.6,
-                    ease: 'power3.inOut'
+        }, {
+            threshold: 0.3,
+            rootMargin: '0px 0px -100px 0px'
+        });
+        
+        youtubeObserver.observe(youtubeSection);
+    }
+    
+    // Clash Royale section animation - Only runs once on first view
+    let clashRoyaleAnimated = false;
+    const clashRoyaleSection = document.querySelector('.clash-royale');
+    if (clashRoyaleSection) {
+        const clashObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !clashRoyaleAnimated) {
+                    clashRoyaleAnimated = true;
+                    
+                    if (typeof gsap !== 'undefined') {
+                        // Animate the clash royale title
+                        gsap.from(".clash-royale h1", {
+                            duration: 1,
+                            y: -50,
+                            opacity: 0,
+                            ease: "power3.out",
+                            onComplete: () => {
+                                gsap.set(".clash-royale h1", { opacity: 1, y: 0 });
+                            }
+                        });
+                        
+                        // Animate the player info and main deck containers
+                        gsap.from(".player-info, .main-deck", {
+                            duration: 1.2,
+                            y: 80,
+                            opacity: 0,
+                            stagger: 0.2,
+                            ease: "power3.out",
+                            delay: 0.3,
+                            onComplete: () => {
+                                gsap.set(".player-info, .main-deck", { opacity: 1, y: 0 });
+                            }
+                        });
+                        
+                        // Animate the stat items
+                        gsap.from(".stat-item", {
+                            duration: 0.8,
+                            y: 40,
+                            opacity: 0,
+                            stagger: 0.1,
+                            ease: "power2.out",
+                            delay: 0.6,
+                            onComplete: () => {
+                                gsap.set(".stat-item", { opacity: 1, y: 0 });
+                            }
+                        });
+                        
+                        // Animate the deck cards
+                        gsap.from(".deck-card", {
+                            duration: 0.6,
+                            scale: 0.8,
+                            opacity: 0,
+                            stagger: 0.1,
+                            ease: "back.out(1.7)",
+                            delay: 0.9,
+                            onComplete: () => {
+                                gsap.set(".deck-card", { opacity: 1, scale: 1 });
+                            }
+                        });
+                        
+                        // Animate the achievements chips
+                        gsap.from(".achievements-chips .chip", {
+                            duration: 0.5,
+                            y: 20,
+                            opacity: 0,
+                            stagger: 0.1,
+                            ease: "power2.out",
+                            delay: 1.2,
+                            onComplete: () => {
+                                gsap.set(".achievements-chips .chip", { opacity: 1, y: 0 });
+                            }
+                        });
+                    }
+                    
+                    clashObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.3,
+            rootMargin: '0px 0px -100px 0px'
+        });
+        
+        clashObserver.observe(clashRoyaleSection);
+    }
+    
+    // Smooth scroll for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
                 });
-
-                gsap.to(menuItems, {
-                    y: 30,
-                    opacity: 0,
-                    duration: 0.4,
-                    stagger: 0.1,
-                    ease: 'power3.out'
-                });
-
-                document.querySelector('.nav').classList.remove('active');
-                isOpen = false;
             }
         });
     });
     
-    // Hero section animations
-    gsap.from('.hero-img', {
-        scale: 0.9, // Slight scale for a subtle zoom-in effect (optional)
-        opacity: 0, // Start fully transparent
-        duration: 1.2,
-        ease: 'power3.out', // Smooth easing for fade-in
-        delay: 0.5
-    });
+    // Back to top button functionality
+    const backToTopBtn = document.getElementById('back-to-top');
+    if (backToTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
 
-    // Animate the gradient ring separately
-    gsap.from('.gradient-ring', {
-        scale: 0.8,
-        opacity: 0,
-        duration: 1.5,
-        ease: 'power3.out',
-        delay: 0.7
-    });
-
-    gsap.from('.hero-content h1', {
-        y: 50,
-        opacity: 0,
-        duration: 1,
-        ease: 'power3.out',
-        delay: 0.8
-    });
-
-    gsap.from('.hero-content p', {
-        y: 30,
-        opacity: 0,
-        duration: 1,
-        ease: 'power3.out',
-        delay: 1
-    });
-
-    gsap.from('.hero-buttons a', {
-        y: 20,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: 'power3.out',
-        delay: 1.2
-    });
-
-    // About section animations (scroll triggered)
-    gsap.from('.about h1', {
-        scrollTrigger: {
-            trigger: '.about',
-            start: 'top 80%'
-        },
-        x: -100,
-        opacity: 0,
-        duration: 1,
-        ease: 'power3.out'
-    });
-
-    // removed about-intro animation
-
-    gsap.from('.about-content .left', {
-        scrollTrigger: {
-            trigger: '.about',
-            start: 'top 80%'
-        },
-        x: -50,
-        opacity: 0,
-        duration: 1,
-        ease: 'power3.out',
-        delay: 0.3
-    });
-
-    gsap.from('.about-content .right', {
-        scrollTrigger: {
-            trigger: '.about',
-            start: 'top 80%'
-        },
-        x: 50,
-        opacity: 0,
-        duration: 1,
-        ease: 'power3.out',
-        delay: 0.3
-    });
-
-    // Skills bars animation (replacing the current window.load event)
-    gsap.from('.skill-bar', {
-        scrollTrigger: {
-            trigger: '.skills',
-            start: 'top 80%'
-        },
-        width: 0,
-        duration: 1.5,
-        ease: 'power3.out',
-        stagger: 0.2,
-        delay: 0.5
-    });
-
-    // Projects section animations
-    gsap.from('.projects h1', {
-        scrollTrigger: {
-            trigger: '.projects',
-            start: 'top 80%'
-        },
-        x: -100,
-        opacity: 0,
-        duration: 1,
-        ease: 'power3.out'
-    });
-
-    gsap.from('.box', {
-        scrollTrigger: {
-            trigger: '.projects',
-            start: 'top 80%'
-        },
-        y: 50,
-        opacity: 0,
-        duration: 1,
-        ease: 'power3.out',
-        stagger: 0.2
-    });
-
-    // Add hover animation for .box elements
-    document.querySelectorAll('.box').forEach(box => {
-        box.addEventListener('mouseenter', () => {
-            gsap.to(box, {
-                scale: 1.05,
-                duration: 0.3,
-                ease: 'power3.out'
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
             });
         });
-
-        box.addEventListener('mouseleave', () => {
-            gsap.to(box, {
-                scale: 1,
-                duration: 0.3,
-                ease: 'power3.out'
-            });
-        });
-    });
-
-    // Contact section animations
-    gsap.from('.contact h2', {
-        scrollTrigger: {
-            trigger: '.contact',
-            start: 'top 80%'
-        },
-        y: -50,
-        opacity: 0,
-        duration: 1,
-        ease: 'power3.out'
-    });
-
-    gsap.from('.contact-info', {
-        scrollTrigger: {
-            trigger: '.contact',
-            start: 'top 80%'
-        },
-        x: -50,
-        opacity: 0,
-        duration: 1,
-        ease: 'power3.out',
-        delay: 0.3
-    });
-
-    gsap.from('.contact-form', {
-        scrollTrigger: {
-            trigger: '.contact',
-            start: 'top 80%'
-        },
-        x: 50,
-        opacity: 0,
-        duration: 1,
-        ease: 'power3.out',
-        delay: 0.3
-    });
-
-    // Footer animation
-    gsap.from('footer', {
-        scrollTrigger: {
-            trigger: 'footer',
-            start: 'top bottom', // Trigger when footer top hits viewport bottom
-            toggleActions: 'play none none none' // Play once when entering
-        },
-        y: 20,
-        opacity: 0,
-        duration: 1,
-        ease: 'power3.out'
-    });
-
-    // Active nav link while scrolling
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('.items a');
-    const idToLink = new Map(Array.from(navLinks).map(a => [a.getAttribute('href').replace('#',''), a]));
-
-    sections.forEach(section => {
-        ScrollTrigger.create({
-            trigger: section,
-            start: 'top center',
-            end: 'bottom center',
-            onEnter: () => toggleActive(section.id),
-            onEnterBack: () => toggleActive(section.id)
-        });
-    });
-
-    function toggleActive(id){
-        navLinks.forEach(a => a.classList.remove('active'));
-        const link = idToLink.get(id);
-        if (link) link.classList.add('active');
     }
-
-    // Animate YouTube section on scroll
-    function animateOnScroll(selector, animationClass = 'in-view') {
-        const el = document.querySelector(selector);
-        if (!el) return;
-        const observer = new window.IntersectionObserver(
-            ([entry], obs) => {
-                if (entry.isIntersecting) {
-                    el.classList.add(animationClass);
-                    obs.disconnect();
-                }
-            },
-            { threshold: 0.2 }
-        );
-        observer.observe(el);
-    }
-
-    animateOnScroll('.youtube');
-
-    // Scroll progress bar & back-to-top
-    const progressBar = document.querySelector('.scroll-progress-bar');
-    const backToTop = document.getElementById('back-to-top');
-    const onScroll = () => {
-        const scrollTop = window.scrollY;
-        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-        if (progressBar) progressBar.style.width = progress + '%';
-        if (backToTop) {
-            if (scrollTop > 600) backToTop.classList.add('show');
-            else backToTop.classList.remove('show');
-        }
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-
-    if (backToTop) {
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    }
-
-    // Clash Royale section animations
-    gsap.from('.clash-royale h1', {
-        scrollTrigger: {
-            trigger: '.clash-royale',
-            start: 'top 90%',
-            toggleActions: 'play none none reverse'
-        },
-        y: -50,
-        opacity: 0,
-        duration: 1,
-        ease: 'power3.out',
-        immediateRender: false
-    });
-
-    gsap.from('.player-info', {
-        scrollTrigger: {
-            trigger: '.clash-royale',
-            start: 'top 90%',
-            toggleActions: 'play none none reverse'
-        },
-        x: -100,
-        opacity: 0,
-        duration: 1,
-        ease: 'power3.out',
-        delay: 0.3,
-        immediateRender: false
-    });
-
-    gsap.from('.main-deck', {
-        scrollTrigger: {
-            trigger: '.clash-royale',
-            start: 'top 90%',
-            toggleActions: 'play none none reverse'
-        },
-        x: 100,
-        opacity: 0,
-        duration: 1,
-        ease: 'power3.out',
-        delay: 0.3,
-        immediateRender: false
-    });
-
-    gsap.from('.stat-item', {
-        scrollTrigger: {
-            trigger: '.clash-royale',
-            start: 'top 90%',
-            toggleActions: 'play none none reverse'
-        },
-        y: 30,
-        opacity: 0,
-        duration: 0.8,
-        ease: 'power3.out',
-        stagger: 0.1,
-        delay: 0.6,
-        immediateRender: false
-    });
-
-    gsap.from('.deck-card', {
-        scrollTrigger: {
-            trigger: '.clash-royale',
-            start: 'top 90%',
-            toggleActions: 'play none none reverse'
-        },
-        y: 50,
-        opacity: 0,
-        duration: 0.8,
-        ease: 'power3.out',
-        stagger: 0.1,
-        delay: 0.8,
-        immediateRender: false
-    });
 });
-
-gsap.registerPlugin(ScrollTrigger);
