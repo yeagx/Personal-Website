@@ -1,11 +1,52 @@
 /* YouTube Section */
 .youtube {
-    margin: 60px;
-    padding: 20px;
+    margin: 0;
+    padding: 80px 20px; /* extra room for waves */
     text-align: center;
     opacity: 1;
     transform: translateY(0);
-    transition: opacity 0.9s cubic-bezier(.4,2,.6,1), transform 0.9s cubic-bezier(.4,2,.6,1);
+    transition: opacity 0.9s cubic-bezier(.4, 2, .6, 1), transform 0.9s cubic-bezier(.4, 2, .6, 1);
+    background-image: url('../Images/ytbg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    /* wave setup */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Wave separators */
+.youtube::before,
+.youtube::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.youtube::before {
+    top: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'><path fill='%23121212' d='M0,40 C240,60 480,80 720,80 C960,80 1200,60 1440,40 L1440,0 L0,0 Z'/></svg>");
+}
+
+.youtube::after {
+    bottom: 0;
+    transform: rotate(180deg);
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'><path fill='%23121212' d='M0,40 C240,60 480,80 720,80 C960,80 1200,60 1440,40 L1440,0 L0,0 Z'/></svg>");
+}
+
+@media (max-width: 768px) {
+    .youtube::before,
+    .youtube::after {
+        height: 56px;
+    }
 }
 
 .youtube.in-view {
@@ -14,13 +55,26 @@
 }
 
 .youtube h1 {
-    font-size: 36px;
-    margin-bottom: 50px;
-    margin-top: 60px;
-    background: linear-gradient(90deg, rgba(246,0,255,1) 0%, rgba(255,136,0,1) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: bold;
+	font-size: 36px;
+	margin: 0 0 40px 0;
+	font-weight: 800;
+	position: relative;
+	display: inline-block;
+	padding: 10px 18px;
+	-webkit-text-fill-color: #fff; /* solid white for max contrast */
+	-webkit-background-clip: initial;
+	background: none;
+	text-shadow: 0 2px 6px rgba(0,0,0,0.45);
+}
+
+.youtube h1::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	border-radius: 12px; /* boxy look (tweak to 6px for sharper corners) */
+	background: rgba(0,0,0,0.62); /* dark backplate */
+	box-shadow: 0 12px 30px rgba(0,0,0,0.58), 0 0 0 1px rgba(255,255,255,0.06);
+	z-index: -1; /* sits behind the text */
 }
 
 .youtube-content {
@@ -32,7 +86,8 @@
     align-items: stretch;
 }
 
-.channel-info, .latest-video {
+.channel-info,
+.latest-video {
     min-height: 340px;
     display: flex;
     flex-direction: column;
@@ -40,8 +95,8 @@
 }
 
 .channel-info {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 15px;
     padding: 30px;
     text-align: center;
@@ -49,8 +104,8 @@
 }
 
 .channel-info:hover {
-    border-color: rgba(246, 0, 255, 0.5);
-    background: rgba(246, 0, 255, 0.05);
+    border-color: rgba(246, 0, 255, 0.4);
+    background: rgba(0, 0, 0, 0.45);
     transform: translateY(-5px);
 }
 
@@ -85,7 +140,7 @@
     width: 132px;
     height: 132px;
     border-radius: 50%;
-    background: linear-gradient(45deg, rgba(246,0,255,1), rgba(255,136,0,1));
+    background: linear-gradient(45deg, rgba(246, 0, 255, 1), rgba(255, 136, 0, 1));
     z-index: 1;
 }
 
@@ -111,22 +166,22 @@
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: linear-gradient(90deg, rgba(246,0,255,1) 0%, rgba(255,136,0,1) 100%);
-    color: white;
+    background: linear-gradient(90deg, #ff0033 0%, #ff8a00 100%);
+    color: #fff;
     text-decoration: none;
-    padding: 12px 25px;
-    border-radius: 25px;
-    font-weight: bold;
+    padding: 12px 26px;
+    border-radius: 28px;
+    font-weight: 800;
     transition: all 0.3s ease;
-    border: none;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 10px 22px rgba(255, 0, 51, 0.28);
     cursor: pointer;
 }
-
 .subscribe-btn:hover {
-    background: linear-gradient(90deg, rgba(255,136,0,1) 0%, rgba(246,0,255,1) 100%);
+    background: linear-gradient(90deg, #ff4d4d 0%, #ff9c33 100%);
     transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(246, 0, 255, 0.3);
-    color: white;
+    box-shadow: 0 12px 26px rgba(255, 0, 51, 0.36);
+    color: #fff;
 }
 
 .subscribe-btn i {
@@ -134,16 +189,16 @@
 }
 
 .latest-video {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 15px;
     padding: 30px;
     transition: all 0.3s ease;
 }
 
 .latest-video:hover {
-    border-color: rgba(255, 136, 0, 0.5);
-    background: rgba(255, 136, 0, 0.05);
+    border-color: rgba(255, 136, 0, 0.4);
+    background: rgba(0, 0, 0, 0.45);
     transform: translateY(-5px);
 }
 
@@ -151,7 +206,8 @@
     position: relative;
     width: 100%;
     height: 0;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    padding-bottom: 56.25%;
+    /* 16:9 aspect ratio */
     margin-bottom: 20px;
     border-radius: 10px;
     overflow: hidden;
@@ -198,8 +254,8 @@
 }
 
 .video-card {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     aspect-ratio: 16/9;
     overflow: hidden;
@@ -209,8 +265,8 @@
 
 .video-card:hover {
     transform: translateY(-2px);
-    border-color: rgba(246,0,255,0.4);
-    background: rgba(246,0,255,0.06);
+    border-color: rgba(246, 0, 255, 0.4);
+    background: rgba(246, 0, 255, 0.06);
 }
 
 .video-card img {
@@ -227,20 +283,25 @@
     bottom: 8px;
     color: #fff;
     font-size: 12px;
-    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
     padding: 24px 8px 8px 8px;
     border-radius: 10px;
 }
 
 .skeleton {
-    background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.08) 37%, rgba(255,255,255,0.05) 63%);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.05) 25%, rgba(255, 255, 255, 0.08) 37%, rgba(255, 255, 255, 0.05) 63%);
     background-size: 400% 100%;
     animation: shimmer 1.4s ease infinite;
 }
 
 @keyframes shimmer {
-    0% { background-position: 100% 0; }
-    100% { background-position: 0 0; }
+    0% {
+        background-position: 100% 0;
+    }
+
+    100% {
+        background-position: 0 0;
+    }
 }
 
 @media (max-width: 768px) {
@@ -256,57 +317,62 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(45deg, rgba(246,0,255,1), rgba(255,136,0,1));
+    background: linear-gradient(45deg, rgba(246, 0, 255, 1), rgba(255, 136, 0, 1));
     color: #fff;
     font-size: 54px;
     font-weight: bold;
     margin: 0 auto 20px auto;
-    box-shadow: 0 2px 16px rgba(246,0,255,0.12);
+    box-shadow: 0 2px 16px rgba(246, 0, 255, 0.12);
     letter-spacing: 2px;
     user-select: none;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
+
     .youtube {
-        margin: 20px 0;
+        margin: 0;
+        padding: 40px 16px;
+        background-attachment: scroll;
     }
-    
+
+
     .youtube h1 {
         text-align: left;
         font-size: 28px;
     }
-    
+
     .youtube-content {
         grid-template-columns: 1fr;
         gap: 30px;
     }
-    
-    .channel-info, .latest-video {
+
+    .channel-info,
+    .latest-video {
         padding: 20px;
     }
-    
+
     .channel-logo img {
         width: 100px;
         height: 100px;
     }
-    
+
     .channel-details h2 {
         font-size: 20px;
     }
-    
+
     .channel-details p {
         font-size: 14px;
     }
-    
+
     .subscribe-btn {
         padding: 10px 20px;
         font-size: 14px;
     }
-    
+
     .logo-fallback {
         width: 100px;
         height: 100px;
         font-size: 38px;
     }
-} 
+}
