@@ -1,0 +1,193 @@
+/* DA Projects Section */
+.da-projects {
+    margin: 0;
+    padding: 100px 60px;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    scroll-margin-top: 80px;
+}
+
+.da-projects h1 {
+    font-size: 36px;
+    margin-bottom: 50px;
+    margin-top: 0;
+    background: linear-gradient(90deg, rgba(246,0,255,1) 0%, rgba(255,136,0,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+}
+
+.da-projects-content {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.da-project-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 15px;
+    padding: 0;
+    transition: all 0.3s ease;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.da-project-card:hover {
+    border-color: rgba(246,0,255,0.4);
+    box-shadow: 0 12px 32px rgba(246,0,255,0.12);
+    background: linear-gradient(180deg, rgba(246,0,255,0.05) 0%, rgba(255,136,0,0.05) 100%);
+    transform: translateY(-5px);
+}
+
+.da-project-image {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 20px;
+}
+
+.da-project-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.da-project-card:hover .da-project-image img {
+    transform: scale(1.02);
+}
+
+.da-project-content {
+    padding: 40px;
+}
+
+.da-project-header {
+    margin-bottom: 20px;
+}
+
+.da-project-header h3 {
+    color: #fff;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.da-project-category {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.category-tag {
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: rgba(246,0,255,0.15);
+    border: 1px solid rgba(246,0,255,0.3);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.da-project-description {
+    color: #ccc;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.da-project-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.da-btn {
+    padding: 12px 24px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid rgba(255,255,255,0.18);
+}
+
+.da-btn-code {
+    background: rgba(255,255,255,0.05);
+    color: #fff;
+}
+
+.da-btn-code:hover {
+    background: rgba(255,255,255,0.12);
+    border-color: rgba(255,255,255,0.28);
+    transform: translateY(-2px);
+}
+
+.da-btn-dashboard {
+    background: linear-gradient(90deg, rgba(246,0,255,0.2) 0%, rgba(255,136,0,0.2) 100%);
+    color: #fff;
+    border-color: rgba(246,0,255,0.4);
+}
+
+.da-btn-dashboard:hover {
+    background: linear-gradient(90deg, rgba(246,0,255,0.3) 0%, rgba(255,136,0,0.3) 100%);
+    transform: translateY(-2px);
+}
+
+.da-btn-live {
+    background: rgba(255,136,0,0.15);
+    color: #fff;
+    border-color: rgba(255,136,0,0.3);
+}
+
+.da-btn-live:hover {
+    background: rgba(255,136,0,0.25);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .da-projects {
+        margin: 0;
+        padding: 80px 20px;
+        min-height: 100vh;
+    }
+    
+    .da-projects h1 {
+        text-align: left;
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+    
+    .da-project-content {
+        padding: 25px;
+    }
+    
+    .da-project-header h3 {
+        font-size: 22px;
+    }
+    
+    .da-project-buttons {
+        flex-direction: column;
+    }
+    
+    .da-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+

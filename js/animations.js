@@ -51,6 +51,23 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
         
+        // DA Projects section animation
+        gsap.from(".da-project-card", {
+            scrollTrigger: {
+                trigger: ".da-projects",
+                start: "top 80%",
+                end: "bottom 20%",
+                toggleActions: "play none none reverse"
+            },
+            duration: 1,
+            y: 50,
+            opacity: 0,
+            ease: "power2.out",
+            onComplete: () => {
+                gsap.set(".da-project-card", { opacity: 1, y: 0 });
+            }
+        });
+        
         // Contact section animation
         gsap.from(".contact .container", {
             scrollTrigger: {
@@ -121,86 +138,73 @@ document.addEventListener('DOMContentLoaded', () => {
         youtubeObserver.observe(youtubeSection);
     }
     
-    // Clash Royale section animation - Only runs once on first view
-    let clashRoyaleAnimated = false;
+    // Clash Royale section animation - Fixed to work on first view
     const clashRoyaleSection = document.querySelector('.clash-royale');
-    if (clashRoyaleSection) {
+    if (clashRoyaleSection && typeof gsap !== 'undefined') {
+        // Set initial opacity to 0 for animated elements
+        gsap.set(".clash-royale h1", { opacity: 0, y: -50 });
+        gsap.set(".player-info, .main-deck", { opacity: 0, y: 80 });
+        gsap.set(".stat-item", { opacity: 0, y: 40 });
+        gsap.set(".deck-card", { opacity: 0, scale: 0.8 });
+        gsap.set(".achievements-chips .chip", { opacity: 0, y: 20 });
+        
         const clashObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting && !clashRoyaleAnimated) {
-                    clashRoyaleAnimated = true;
+                if (entry.isIntersecting) {
+                    // Animate the clash royale title
+                    gsap.to(".clash-royale h1", {
+                        duration: 1,
+                        y: 0,
+                        opacity: 1,
+                        ease: "power3.out"
+                    });
                     
-                    if (typeof gsap !== 'undefined') {
-                        // Animate the clash royale title
-                        gsap.from(".clash-royale h1", {
-                            duration: 1,
-                            y: -50,
-                            opacity: 0,
-                            ease: "power3.out",
-                            onComplete: () => {
-                                gsap.set(".clash-royale h1", { opacity: 1, y: 0 });
-                            }
-                        });
-                        
-                        // Animate the player info and main deck containers
-                        gsap.from(".player-info, .main-deck", {
-                            duration: 1.2,
-                            y: 80,
-                            opacity: 0,
-                            stagger: 0.2,
-                            ease: "power3.out",
-                            delay: 0.3,
-                            onComplete: () => {
-                                gsap.set(".player-info, .main-deck", { opacity: 1, y: 0 });
-                            }
-                        });
-                        
-                        // Animate the stat items
-                        gsap.from(".stat-item", {
-                            duration: 0.8,
-                            y: 40,
-                            opacity: 0,
-                            stagger: 0.1,
-                            ease: "power2.out",
-                            delay: 0.6,
-                            onComplete: () => {
-                                gsap.set(".stat-item", { opacity: 1, y: 0 });
-                            }
-                        });
-                        
-                        // Animate the deck cards
-                        gsap.from(".deck-card", {
-                            duration: 0.6,
-                            scale: 0.8,
-                            opacity: 0,
-                            stagger: 0.1,
-                            ease: "back.out(1.7)",
-                            delay: 0.9,
-                            onComplete: () => {
-                                gsap.set(".deck-card", { opacity: 1, scale: 1 });
-                            }
-                        });
-                        
-                        // Animate the achievements chips
-                        gsap.from(".achievements-chips .chip", {
-                            duration: 0.5,
-                            y: 20,
-                            opacity: 0,
-                            stagger: 0.1,
-                            ease: "power2.out",
-                            delay: 1.2,
-                            onComplete: () => {
-                                gsap.set(".achievements-chips .chip", { opacity: 1, y: 0 });
-                            }
-                        });
-                    }
+                    // Animate the player info and main deck containers
+                    gsap.to(".player-info, .main-deck", {
+                        duration: 1.2,
+                        y: 0,
+                        opacity: 1,
+                        stagger: 0.2,
+                        ease: "power3.out",
+                        delay: 0.3
+                    });
+                    
+                    // Animate the stat items
+                    gsap.to(".stat-item", {
+                        duration: 0.8,
+                        y: 0,
+                        opacity: 1,
+                        stagger: 0.1,
+                        ease: "power2.out",
+                        delay: 0.6
+                    });
+                    
+                    // Animate the deck cards
+                    gsap.to(".deck-card", {
+                        duration: 0.6,
+                        scale: 1,
+                        opacity: 1,
+                        stagger: 0.1,
+                        ease: "back.out(1.7)",
+                        delay: 0.9
+                    });
+                    
+                    // Animate the achievements chips
+                    gsap.to(".achievements-chips .chip", {
+                        duration: 0.5,
+                        y: 0,
+                        opacity: 1,
+                        stagger: 0.1,
+                        ease: "power2.out",
+                        delay: 1.2
+                    });
                     
                     clashObserver.unobserve(entry.target);
                 }
             });
         }, {
-            threshold: 0.3,
-            rootMargin: '0px 0px -100px 0px'
+            threshold: 0.1,
+            rootMargin: '0px'
         });
         
         clashObserver.observe(clashRoyaleSection);
@@ -212,10 +216,24 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+                // Special handling for DA projects section to center it
+                if (target.id === 'da-projects') {
+                    const navHeight = document.querySelector('.nav').offsetHeight;
+                    const targetPosition = target.offsetTop - navHeight;
+                    const viewportHeight = window.innerHeight;
+                    const targetHeight = target.offsetHeight;
+                    const scrollPosition = targetPosition - (viewportHeight - targetHeight) / 2;
+                    
+                    window.scrollTo({
+                        top: Math.max(0, scrollPosition),
+                        behavior: 'smooth'
+                    });
+                } else {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             }
         });
     });
@@ -238,4 +256,43 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+    
+    // Active nav link highlighting based on scroll position
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.items a[href^="#"]');
+    
+    function updateActiveNavLink() {
+        let current = '';
+        const scrollY = window.pageYOffset;
+        const navHeight = document.querySelector('.nav').offsetHeight;
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - navHeight - 100;
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+            
+            if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                current = sectionId;
+            }
+        });
+        
+        // Handle hero section (when at top of page)
+        if (scrollY < 100) {
+            current = 'hero';
+        }
+        
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            const href = link.getAttribute('href');
+            if (href === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
+    }
+    
+    // Update on scroll
+    window.addEventListener('scroll', updateActiveNavLink);
+    
+    // Update on page load
+    updateActiveNavLink();
 });

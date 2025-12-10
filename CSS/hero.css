@@ -176,38 +176,65 @@ p {
 }
 
 @media (max-width: 768px) {
+  .hero {
+    padding: 30px 20px 40px 20px;
+  }
+
   h1 {
-    font-size: 22px;
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+
+  .sub-usp {
+    font-size: 15px;
+    margin-bottom: 20px;
   }
 
   p {
-    font-size: 14px;
+    font-size: 15px;
+    margin-bottom: 30px;
+    line-height: 1.6;
   }
 
   .chip {
-    font-size: 9px !important;
-    padding: 4px 8px;
+    font-size: 11px !important;
+    padding: 6px 10px;
+  }
+
+  .focus-chips {
+    gap: 8px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
   }
 
   .hero-buttons {
     gap: 15px;
+    flex-wrap: wrap;
   }
 
   .res-btn,
   .hero-connect {
-    padding: 12px;
-    font-size: 14px;
+    padding: 14px 20px;
+    font-size: 15px;
   }
 
   .personal-img {
-    width: 150px;
-    height: 150px;
+    width: 180px;
+    height: 180px;
+    margin-bottom: 30px;
   }
+  
   .gradient-ring {
-    width: 170px;
-    height: 170px;
+    width: 200px;
+    height: 200px;
   }
+  
+  .hero-img {
+    margin-bottom: 30px;
+  }
+
   .hero-content {
-    margin: 40px auto;
+    margin: 60px auto 40px auto;
+    padding: 0 15px;
   }
 }

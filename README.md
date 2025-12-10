@@ -1,17 +1,18 @@
-## Abdulrhman Mohamed — Data‑focused Frontend Developer 👨‍💻📊
+## Abdulrhman Mohamed — Data Analyst 📊
 
-> I turn messy data into decisions and delightful UIs. ✨
+> Transforming complex data into actionable insights through end-to-end analytics solutions.
 
-[🌐 Portfolio](/index.html) • [📄 Resume](./CV.pdf) • [▶️ YouTube](https://www.youtube.com/@YeagX) • [🔗 LinkedIn](https://www.linkedin.com/in/ayeager13/) • [🐙 GitHub](https://github.com/AYeagerr)
+[🌐 Portfolio](/index.html) • [📄 Resume](./CV.pdf) • [▶️ YouTube](https://www.youtube.com/@YeagX) • [🔗 LinkedIn](https://www.linkedin.com/in/abdulrhman-mohamed-da/) • [🐙 GitHub](https://github.com/yeagx)
 
 ---
 
 ### Highlights ✨
 
-- **Modern hero ✨**: Gradient‑ring avatar, crisp typography, focused value prop
+- **Modern hero ✨**: Gradient‑ring avatar, crisp typography, Data Analyst focus
 - **Micro‑interactions 🎛️**: Smooth GSAP + ScrollTrigger animations across sections
-- **YouTube integration 📺**: Latest video + 3 recent uploads via RSS, “NEW” badge, channel logo fetch
-- **Projects grid 🧩**: Hover lift, clean CTAs to Live Demo and Code
+- **DA Projects section 📊**: Featured F1 Performance Analytics project with Power BI dashboard preview
+- **Skills showcase 🎯**: Dynamic progress indicators showing current expertise (Excel, SQL, Python, Power BI)
+- **YouTube integration 📺**: Latest video + 3 recent uploads via RSS, "NEW" badge, channel logo fetch
 - **Clash Royale spotlight 👑**: Personal stats, deck cards with elixir badges, favorite card highlight
 - **Zero‑backend contact ✉️**: Validated form submitting to Google Forms with a custom success popup
 - **Performance‑minded 🚀**: Lazy-loaded images/iframe, skeleton placeholders, lightweight vanilla JS
@@ -57,9 +58,11 @@ python -m http.server 8080
   - Auto “NEW” badge for uploads within 7 days
   - Fetches channel avatar from RSS with graceful fallback
 
-- **Projects 🧩**
-  - Curated cards with images for IGYM, ARIA, and Red E‑commerce
-  - Buttons for “Live Demo” and “Code” open in new tabs
+- **DA Projects 📊**
+  - Featured F1 Performance Analytics & ML Season Predictor project
+  - Power BI dashboard preview image
+  - Multiple CTAs: View Code (GitHub), View Dashboard (Power BI), Live App (Streamlit)
+  - Clean card design with category tags
 
 - **Clash Royale corner ⚔️**
   - Profile stats, achievements chips, last updated date
@@ -83,8 +86,9 @@ cd Portfolio
 File structure:
 ```
 Portfolio/
-  CSS/                # Sectioned styles (nav, hero, about, projects, youtube, clash-royale, contact, footer)
+  CSS/                # Sectioned styles (nav, hero, about, da-projects, youtube, clash-royale, contact, footer)
   Images/             # Avatar, project images, Clash Royale cards, favicon
+    Projects/        # DA project images (F1 dashboard)
     cards/            # Deck card art and metadata
   js/
     animations.js     # GSAP + ScrollTrigger animations and interactions
@@ -131,7 +135,8 @@ Portfolio/
 - **Branding**: Update name, tagline, and avatar in `index.html`
 - **Colors/Type**: Tune palettes in `CSS/main.css` and section styles
 - **Socials**: Edit links in the `About` section
-- **Projects**: Replace images in `Images/` and update links/titles under `#projects`
+- **DA Projects**: Add project images to `Images/Projects/` and update project cards in `#da-projects`
+- **Skills**: Update progress indicators in the `About` section to reflect your current expertise
 - **Clash Royale**: Swap images in `Images/cards/` and adjust stats/deck labels
 
 ---
@@ -175,5 +180,5 @@ Assets and trademarks for Clash Royale belong to Supercell. External libraries r
 - Phone: +201023232234
 - Cairo, Egypt
 - YouTube: @YeagX
-- LinkedIn: /in/ayeager13/
-- GitHub: @AYeagerr
+- LinkedIn: /in/abdulrhman-mohamed-da/
+- GitHub: @yeagx
